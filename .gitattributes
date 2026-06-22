@@ -1,21 +1,19 @@
-# Pengaturan standar
 * text=auto eol=lf
+# Anggap blade sebagai HTML
+*.blade.php linguist-language=HTML
 
-# Agar file Blade dideteksi sebagai Blade
-*.blade.php linguist-language=Blade
-
-# Diff settings
+# Exclude folder vendor & node_modules dari statistik
+vendor/* linguist-vendored
+node_modules/* linguist-vendored
+public/js/* linguist-vendored
+public/css/* linguist-vendored
+*.blade.php linguist-detectable=false
 *.blade.php diff=html
 *.css diff=css
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
 
-# Sembunyikan file sistem yang tidak perlu dihitung
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
-
-# Cukup vendored folder yang benar-benar bukan kode Anda
-bootstrap/**/* linguist-vendored
-storage/**/* linguist-vendored
