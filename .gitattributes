@@ -1,18 +1,22 @@
+# Konfigurasi Line Endings
 * text=auto eol=lf
-# Anggap blade sebagai HTML
-*.blade.php linguist-language=PHP
-# Exclude folder vendor & node_modules dari statistik
+
+# Abaikan file agar tidak masuk statistik (pilih salah satu)
+*.blade.php linguist-detectable=false
+
+# Vendor & Node Modules (Sudah benar)
 vendor/* linguist-vendored
 node_modules/* linguist-vendored
 public/js/* linguist-vendored
 public/css/* linguist-vendored
-*.blade.php linguist-detectable=false
-*.blade.php diff=html
+
+# Pengaturan Diff (Sudah benar)
 *.css diff=css
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
 
+# Export ignore (Sudah benar)
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
