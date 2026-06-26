@@ -22,7 +22,13 @@ return new class extends Migration
             'Laki-laki',
             'Perempuan'
         ]);
-
+       
+            Warga::create([
+    'no_kk'=>'1234567890123456',
+    'nik'=>'123456789',
+    'nama_lengkap'=>'Budi',
+    'alamat'=>'Desa Contoh'
+]);
         $table->date('tanggal_lahir')->nullable();
 
         $table->text('alamat');

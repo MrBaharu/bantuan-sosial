@@ -29,7 +29,10 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::resource('warga', WargaController::class);
-    Route::resource('penerima-bansos', PenerimaBansosController::class);
+    Route::resource('penerima-bansos', PenerimaBansosController::class)
+    ->parameters([
+        'penerima-bansos' => 'penerimaBansos'
+    ]);
     Route::resource('jenis-bansos', JenisBansosController::class);
 
     Route::get('/penyaluran', [PenyaluranController::class, 'index'])->name('penyaluran.index');

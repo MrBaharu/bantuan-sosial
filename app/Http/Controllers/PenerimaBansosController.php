@@ -19,7 +19,7 @@ class PenerimaBansosController extends Controller
             'jenisBansos'
         ])->get();
 
-        return view('penerima_bansos.index', compact('penerima'));
+        return view('penerima-bansos.penerima', compact('penerima'));
     }
 
 
@@ -32,7 +32,7 @@ class PenerimaBansosController extends Controller
 
         $jenisBansos = JenisBansos::all();
 
-        return view('penerima_bansos.create', compact(
+        return view('penerima-bansos.create', compact(
             'warga',
             'jenisBansos'
         ));
@@ -57,8 +57,8 @@ class PenerimaBansosController extends Controller
 
 
         return redirect()
-            ->route('penerima-bansos.index')
-            ->with('success','Data penerima bansos berhasil ditambahkan');
+    ->route('penerima-bansos.index')
+    ->with('success','Data penerima bansos berhasil ditambahkan');
     }
 
 
@@ -68,7 +68,7 @@ class PenerimaBansosController extends Controller
     public function show(PenerimaBansos $penerimaBansos)
     {
         return view(
-            'penerima_bansos.show',
+            'penerima-bansos.show',
             compact('penerimaBansos')
         );
     }
@@ -84,7 +84,7 @@ class PenerimaBansosController extends Controller
         $jenisBansos = JenisBansos::all();
 
         return view(
-            'penerima_bansos.edit',
+            'penerima-bansos.edit',
             compact(
                 'penerimaBansos',
                 'warga',
@@ -98,38 +98,33 @@ class PenerimaBansosController extends Controller
      * Update data
      */
     public function update(
-        Request $request,
-        PenerimaBansos $penerimaBansos
-    )
-    {
-        $data = $request->validate([
-            'warga_id' => 'required',
-            'jenis_bansos_id' => 'required',
-            'tanggal_menerima' => 'nullable|date',
-            'status' => 'required',
-            'keterangan' => 'nullable'
-        ]);
+    Request $request,
+    PenerimaBansos $penerimaBansos
+)
+{
+    $data = $request->validate([
+        'warga_id' => 'required',
+        'jenis_bansos_id' => 'required',
+        'tanggal_menerima' => 'nullable|date',
+        'status' => 'required',
+        'keterangan' => 'nullable'
+    ]);
 
 
-        $penerimaBansos->update($data);
+    $penerimaBansos->update($data);
 
 
-        return redirect()
-            ->route('penerima-bansos.index')
-            ->with('success','Data berhasil diperbarui');
-    }
+    return redirect()
+        ->route('penerima-bansos.index')
+        ->with('success','Data berhasil diperbarui');
+}
 
+   public function destroy(PenerimaBansos $penerimaBansos)
+{
+    $penerimaBansos->delete();
 
-    /**
-     * Hapus data
-     */
-    public function destroy(PenerimaBansos $penerimaBansos)
-    {
-        $penerimaBansos->delete();
-
-
-        return redirect()
-            ->route('penerima-bansos.index')
-            ->with('success','Data berhasil dihapus');
-    }
+    return redirect()
+        ->route('penerima-bansos.index')
+        ->with('success','Data berhasil dihapus');
+}
 }
